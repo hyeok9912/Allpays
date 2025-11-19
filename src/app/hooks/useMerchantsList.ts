@@ -3,7 +3,7 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
-interface MerchantsListData {
+export interface MerchantsListData {
   mchtCode: string;
   mchtName: string;
   status: string;
@@ -20,12 +20,20 @@ const fetchMerchantsList = async (): Promise<MerchantsListData[]> => {
   }
 };
 
-export const useMerchantsList = () => {
+export const useMerchantsList = ({
+  staleTime = 5 * 60 * 1000,
+  refetchInterval,
+}: {
+  staleTime?: number;
+  refetchInterval?: number;
+} = {}) => {
   return useQuery<MerchantsListData[], Error>({
     queryKey: ["merchants-list"],
     queryFn: async () => {
       const data = await fetchMerchantsList();
       return data;
     },
+    staleTime,
+    refetchInterval,
   });
 };
