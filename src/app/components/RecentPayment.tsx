@@ -65,8 +65,7 @@ const RecentPayment = () => {
                   {payment.mchtName}
                 </td>
                 <td className="text-center border-t-2 py-[4px]">
-                  {payment.amount}
-                  {payment.currency}
+                  {payment.amount}({payment.currency})
                 </td>
                 <td
                   className="text-center border-t-2 py-[4px]"

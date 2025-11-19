@@ -1,9 +1,7 @@
-"use client";
-
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
-interface MerchantsDetailData {
+export interface MerchantsDetailData {
   mchtCode: string;
   mchtName: string;
   status: string;
@@ -16,22 +14,15 @@ interface MerchantsDetailData {
   updatedAt: string;
 }
 
-const fetchMerchantsDetail = async (): Promise<MerchantsDetailData[]> => {
-  try {
-    const response = await axios.get("/api/merchants-detail");
-    return response.data.data;
-  } catch (err) {
-    console.error(err);
-    throw err;
-  }
-};
-
-export const useMerchantsDetail = () => {
-  return useQuery<MerchantsDetailData[], Error>({
-    queryKey: ["merchants-detail"],
+export const useMerchantsDetail = (mchtCode: string | string[]) => {
+  return useQuery<MerchantsDetailData, Error>({
+    queryKey: ["merchants-detail", mchtCode],
     queryFn: async () => {
-      const data = await fetchMerchantsDetail();
-      return data;
+      const { data } = await axios.get(`/api/merchants-detail`, {
+        params: { mchtCode },
+      });
+      return data.data;
     },
+    enabled: !!mchtCode,
   });
 };

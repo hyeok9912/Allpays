@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { FiX } from "react-icons/fi";
-import { Menu, MenuItem, SubMenu } from "react-pro-sidebar";
+import { Menu, MenuItem } from "react-pro-sidebar";
 
 interface SideBarProps {
   isOpen: boolean;
@@ -30,6 +30,7 @@ const SideBar = ({ isOpen, onClose }: SideBarProps) => {
      
         `}
       >
+        <p className="absolute top-4 left-4 text-gray-600 font-sans">AllPay</p>
         <button
           className="absolute top-4 right-4 text-gray-600"
           onClick={onClose}
@@ -37,12 +38,12 @@ const SideBar = ({ isOpen, onClose }: SideBarProps) => {
           <FiX size={24} />
         </button>
         <Menu className="mt-12">
-          <MenuItem>
-            <Link href={"#"}>DashBoard</Link>
+          <MenuItem component={<Link href="/" />}>대쉬보드</MenuItem>
+          <MenuItem component={<Link href="/merchantslist" />}>
+            가맹점 조회
           </MenuItem>
-          <SubMenu label="More">
-            <MenuItem>Settings</MenuItem>
-          </SubMenu>
+          <MenuItem component={<Link href="#" />}>거래 내역 조회</MenuItem>
+          <MenuItem component={<Link href="#" />}>가맹점 상세 조회</MenuItem>
         </Menu>
       </div>
     </>

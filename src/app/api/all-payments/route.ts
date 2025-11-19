@@ -8,5 +8,6 @@ export async function GET() {
     return NextResponse.json(response.data);
   } catch (err) {
     console.error(err);
+    return NextResponse.error();
   }
 }
