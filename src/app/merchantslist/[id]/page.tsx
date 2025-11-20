@@ -60,7 +60,8 @@ const MerchantsDetail = () => {
   ];
 
   return (
-    <div className="w-full mx-auto">
+    <div className="w-full mx-auto px-[12px] py-[8px]">
+      <h2 className="font-bold text-[1.5rem] mb-2 ">가맹점 상세 정보</h2>
       <table className="w-full border border-gray-200">
         <tbody>
           {thMap.map((item, idx) => (
