@@ -52,6 +52,17 @@ const SideBar = ({ isOpen, onClose }: SideBarProps) => {
           <MenuItem component={<Link href="/paymentlist" />}>
             거래 내역 조회
           </MenuItem>
+          <MenuItem
+            onClick={() =>
+              window.open(
+                "/addmerchants",
+                "addmerchants",
+                "width=500,height=700,top=100,left=100"
+              )
+            }
+          >
+            가맹점 등록
+          </MenuItem>
         </Menu>
       </div>
     </>
