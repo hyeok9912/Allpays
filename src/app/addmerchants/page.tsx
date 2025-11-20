@@ -74,7 +74,7 @@ const AddMerchants = () => {
           className="flex flex-col gap-4 px-[24px]"
           onSubmit={methods.handleSubmit(onSubmit)}
         >
-          <h2 className="font-bold text-[1.5rem]">가맹점 등록</h2>
+          <h2 className="font-bold text-[1.5rem] mt-4">가맹점 등록</h2>
 
           <input
             type="text"
