@@ -107,7 +107,7 @@ const MerchantsList = () => {
                       window.open(
                         `/merchantslist/${merchant.mchtCode}`,
                         "merchantDetail",
-                        "width=500,height=700,top=100,left=100"
+                        "width=500,height=500,top=100,left=100"
                       )
                     }
                     className="text-blue-600 underline cursor-pointer"
