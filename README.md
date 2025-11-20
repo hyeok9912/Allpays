@@ -16,7 +16,7 @@ Tech:
 
 UI Library :
 
-- dyajs 1.11.19
+- dayjs 1.11.19
 - react-bugger-menu 3.1
 - react-icon 1.0
 - react-icons 5.5
