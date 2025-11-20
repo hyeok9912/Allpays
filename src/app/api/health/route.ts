@@ -2,12 +2,12 @@ import axios from "axios";
 import { NextResponse } from "next/server";
 
 export async function GET() {
-  const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
   try {
-    const response = await axios.get(`${BASE_URL}api/v1/payments/list`);
+    const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+    const response = await axios.get(`${BASE_URL}health`);
     return NextResponse.json(response.data);
   } catch (err) {
     console.error(err);
-    return NextResponse.error();
+    NextResponse.error();
   }
 }

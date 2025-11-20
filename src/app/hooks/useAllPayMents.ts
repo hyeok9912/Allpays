@@ -3,7 +3,7 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
-interface AllPayMentsData {
+export interface AllPayMentsData {
   paymentCode: string;
   mchtCode: string;
   amount: string;
@@ -23,12 +23,20 @@ const fetchAllPayMents = async (): Promise<AllPayMentsData[]> => {
   }
 };
 
-export const useAllPayMents = () => {
+export const useAllPayMents = ({
+  staleTime = 5 * 60 * 1000,
+  refetchInterval,
+}: {
+  staleTime?: number;
+  refetchInterval?: number | false;
+} = {}) => {
   return useQuery<AllPayMentsData[], Error>({
-    queryKey: ["all-payments"],
+    queryKey: ["all-payments", staleTime, refetchInterval],
     queryFn: async () => {
       const data = await fetchAllPayMents();
       return data;
     },
+    staleTime,
+    refetchInterval,
   });
 };

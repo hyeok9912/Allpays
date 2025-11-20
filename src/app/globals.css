@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.recharts-bar-rectangle {
+  outline: none;
+  pointer-events: auto;
+}
+
+.recharts-bar-rectangle:focus {
+  outline: none;
+}
