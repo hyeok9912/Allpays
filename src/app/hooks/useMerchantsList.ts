@@ -28,7 +28,7 @@ export const useMerchantsList = ({
   refetchInterval?: number;
 } = {}) => {
   return useQuery<MerchantsListData[], Error>({
-    queryKey: ["merchants-list"],
+    queryKey: ["merchants-list", staleTime, refetchInterval],
     queryFn: async () => {
       const data = await fetchMerchantsList();
       return data;

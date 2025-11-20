@@ -22,7 +22,7 @@ const Header = () => {
         className="text-gray-400 font-bold cursor-pointer"
         onClick={() => router.push("/")}
       >
-        Allpay for Admin
+        Allpays for Admin
       </p>
     </div>
   );

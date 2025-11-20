@@ -3,14 +3,15 @@ import { FiSearch } from "react-icons/fi";
 interface SearchBarProps {
   keyword: string;
   onChange: (value: string) => void;
+  placeholder?: string;
 }
-const SearchBar = ({ keyword, onChange }: SearchBarProps) => {
+const SearchBar = ({ keyword, onChange, placeholder }: SearchBarProps) => {
   return (
     <div className="w-full relative">
       <input
         type="text"
         className="w-full rounded-[8px] min-h-[56px] p-[8px] shadow-md"
-        placeholder="가맹점 코드나 가맹점 또는 가맹점 상태를 입력해주세요."
+        placeholder={placeholder}
         onChange={(e) => onChange(e.target.value)}
         value={keyword}
       />
