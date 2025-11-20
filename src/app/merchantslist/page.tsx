@@ -6,26 +6,24 @@ import { useMerchantsList } from "../hooks/useMerchantsList";
 
 type SortKey = "mchtCode" | "mchtName" | "status" | "bizType";
 type SortOrder = "asc" | "desc";
+export const statusMap: Record<string, { color: string; label: string }> = {
+  INACTIVE: { label: "중지", color: "#FF8042" },
+  ACTIVE: { label: "활성", color: "#33CC33" },
+  CLOSED: { label: "폐기", color: "#EF4444" },
+  READY: { label: "대기", color: "#8884D8" },
+};
+export const tableHeaders: { key: SortKey; label: string }[] = [
+  { key: "mchtCode", label: "가맹점코드" },
+  { key: "mchtName", label: "가맹점" },
+  { key: "status", label: "상태" },
+  { key: "bizType", label: "업종" },
+];
 
 const MerchantsList = () => {
   const { data: merchants } = useMerchantsList();
   const [keyword, setKeyword] = useState("");
   const [sortKey, setSortKey] = useState<SortKey>("mchtName");
   const [sortOrder, setSortOrder] = useState<SortOrder>("asc");
-
-  const tableHeaders: { key: SortKey; label: string }[] = [
-    { key: "mchtCode", label: "가맹점코드" },
-    { key: "mchtName", label: "가맹점" },
-    { key: "status", label: "상태" },
-    { key: "bizType", label: "업종" },
-  ];
-
-  const statusMap: Record<string, { color: string; label: string }> = {
-    INACTIVE: { label: "중지", color: "#FF8042" },
-    ACTIVE: { label: "활성", color: "#33CC33" },
-    CLOSED: { label: "폐기", color: "#EF4444" },
-    READY: { label: "대기", color: "#8884D8" },
-  };
 
   const filteredAndSorted = useMemo(() => {
     if (!merchants) return [];
